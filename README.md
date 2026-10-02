@@ -1,6 +1,20 @@
-# Huff Curves BR
+# Brazilian Flood-Infrastructure Design Criteria
 
-Python workflow to download ANA sub-daily rainfall data, extract rainfall events, compute empirical Huff curves, compare them with the original Huff curves, and export station-level coefficient tables and maps.
+Data, code, and reproducibility materials for the study *Brazilian
+flood-infrastructure design criteria are outdated for current and future
+climate conditions*. The analysis evaluates how locally derived sub-daily
+rainfall, storm temporal patterns, and climate-change scaling alter the design
+of inlets, storm sewers, conveyance structures, and detention storage across
+Brazil.
+
+The publication-ready release is documented in `zenodo_release/`. It includes
+the prepared catchment table, complete factorial result arrays, gridded design
+corrections, policy-scale diagnostics, figure-generation code, manuscript
+sources, and instructions for reproducing the analysis.
+
+This repository also preserves the empirical Brazilian Huff-curve workflow
+used to derive one of the study inputs. Its Python package retains the legacy
+`huff_curves_br` namespace so existing analyses remain reproducible.
 
 ## Interactive Web Atlas
 
@@ -38,9 +52,9 @@ and time step to generate and export quartile-specific hyetographs.
 The `docs/` folder contains only the static website files and compact browser
 data assets. The larger raw pipeline outputs remain ignored.
 
-## Current Scope
+## Empirical storm-pattern workflow
 
-The repository now keeps only the pieces needed for:
+The underlying rainfall-processing workflow provides the tools needed for:
 
 1. Downloading/caching ANA telemetric rainfall data.
 2. Cleaning and regularizing sub-daily rainfall series.
@@ -203,3 +217,17 @@ pytest
 - `src/huff_curves_br/regional.py`: state, municipality, and biome median-Huff aggregation and GIS exports.
 - `src/huff_curves_br/maps.py`: optional map outputs.
 - `src/huff_curves_br/reference.py`: generic reference-layer downloader.
+
+## License
+
+Source code (`src/`, `scripts/`, and the web atlas code in `docs/`) is
+licensed under the [MIT License](LICENSE).
+
+Derived data products (station-, biome-, state-, and municipality-level Huff
+curve coefficients, diagnostics, and design-hydrograph results, principally
+under `outputs/`) are licensed under
+[CC-BY-4.0](LICENSE-DATA); see that file for the suggested citation.
+
+The underlying ANA telemetric rainfall records are not redistributed here
+and remain subject to their original source terms
+([ANA Hidroweb](https://www.snirh.gov.br/hidroweb)).
